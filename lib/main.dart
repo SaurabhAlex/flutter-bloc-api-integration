@@ -1,7 +1,13 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_api_integration/data/model/post_model.dart';
+import 'package:flutter_bloc_api_integration/data/repositories/post_repo.dart';
 import 'package:flutter_bloc_api_integration/presentation/screens/home_screen.dart';
 
-void main() {
+void main() async{
+  PostRepository repository = PostRepository();
+  List<PostModel> postModels = await repository.fetchPosts();
+  log(postModels.toString());
   runApp(const MyApp());
 }
 
